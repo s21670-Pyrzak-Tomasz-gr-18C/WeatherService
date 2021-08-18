@@ -14,9 +14,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class AveragedWeatherData {
+public class AveragedWeatherData extends BaseEntity{
 
-    @Id
     private LocalDate date;
 
     private double temperature;
@@ -34,6 +33,8 @@ public class AveragedWeatherData {
 
     @Column (name = "localisation_id")
     private Long  localisationID;
+
+
 
 
 
