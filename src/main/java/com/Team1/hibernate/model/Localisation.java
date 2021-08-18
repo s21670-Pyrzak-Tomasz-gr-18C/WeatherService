@@ -14,11 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Localisation {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private Long id;
+public class Localisation extends BaseEntity{
 
     @Column(name = "geographic_coordinates")
     private String geographicCoordinates;
