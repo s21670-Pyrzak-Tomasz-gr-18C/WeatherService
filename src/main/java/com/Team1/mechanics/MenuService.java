@@ -1,10 +1,8 @@
 package com.Team1.mechanics;
 
-import com.Team1.hibernate.DataBaseWorks;
-import com.Team1.hibernate.model.AveragedWeatherData;
-import com.Team1.hibernate.repository.AveregedWeatherDataRepository;
-import com.Team1.json.Deserialize;
+import com.Team1.json.DeserializeAccuweatherResponse;
 import com.Team1.weatherservicerecords.AccuweatherService;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import okhttp3.Response;
 
 import java.io.IOException;
@@ -23,13 +21,27 @@ public class MenuService {
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Podaj nazwę miejscowści");
                 AccuweatherService accuweatherService = new AccuweatherService();
+
                 accuweatherService.createBaseUrl(sc.nextLine());
-//                try (Response response = accuweatherService.getResponseFromAcuweather()) {
-//                }catch (Exception e){
-//                    e.printStackTrace();
-//                }
-                AveragedWeatherData averagedWeatherData =Deserialize.deserializeDataFromJson(accuweatherService.getResponseFromAcuweather().toString());
-                System.out.println(averagedWeatherData.toString());
+                Response response = accuweatherService.getResponseFromAcuweather();
+                String jason = response.body().string();
+
+                System.out.println(jason);
+
+
+              //  DeserializeAccuweatherResponse deserializeAccuweatherResponse = new DeserializeAccuweatherResponse();
+              //  String cityKey = deserializeAccuweatherResponse.deserializeAccuweatherresponse(jason).getCityKey();
+
+              //  System.out.println(cityKey);
+
+                //accuweatherService.createUrlByCityKey("2696858");
+                //Response responseByCityKey = accuweatherService.getResponseByCityKeyFromAcuweather();
+                //System.out.println(responseByCityKey.body().string());
+
+
+
+              //  AveragedWeatherData averagedWeatherData =Deserialize.deserializeDataFromJson(accuweatherService.getResponseFromAcuweather().toString()); // to przekazać String ze zmienionego Jasona
+             //   System.out.println(averagedWeatherData.toString());
             //    AveregedWeatherDataRepository averegedWeatherDataRepository = new AveregedWeatherDataRepository();
             //    averegedWeatherDataRepository.printRealTimeWeatherData(averagedWeatherData);
                 break;

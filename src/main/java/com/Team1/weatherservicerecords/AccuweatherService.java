@@ -9,16 +9,33 @@ import java.io.IOException;
 public class AccuweatherService {
     private String apkey = "iLMHejPpxQb8aAHiKEisjROm5rjq7uNu";
     private final String BASE_URL = "http://dataservice.accuweather.com/locations/v1/search?q=";
-    private String Url;
+    private final String BASE_URL_BY_CITY_KEY ="http://dataservice.accuweather.com/forecasts/v1/daily/1day/";
+    private String url;
+    private String urlByCityKey;
 
-    public String createBaseUrl( String cityName) {
-        Url=BASE_URL + cityName+"&apkey="+apkey;
-        return Url;
+    public void  createBaseUrl( String cityName) {
+        url=BASE_URL + cityName+"&apikey="+apkey;
     }
 
     public Response getResponseFromAcuweather() throws IOException {
         Request request = new Request.Builder()
-                .url(Url)
+                .url(url)
+                .build();
+
+        OkHttpClient client = new OkHttpClient();
+
+        Call call = client.newCall(request);
+        Response response = call.execute();
+        return  response;
+    }
+
+    public void createUrlByCityKey(String cityKey){
+        urlByCityKey = BASE_URL_BY_CITY_KEY+cityKey+"?apikey="+apkey;
+    }
+
+    public Response getResponseByCityKeyFromAcuweather() throws IOException {
+        Request request = new Request.Builder()
+                .url(urlByCityKey)
                 .build();
 
         OkHttpClient client = new OkHttpClient();
