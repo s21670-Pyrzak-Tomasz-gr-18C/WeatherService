@@ -22,7 +22,7 @@ public class DataBaseWorks {
                 .buildSessionFactory();
 
         localisationQueries(sessionFactory);
-        averagedWeatherDataQueries(sessionFactory);
+ //       averagedWeatherDataQueries(sessionFactory);
     }
 
     public void localisationQueries(SessionFactory sessionFactory){
@@ -32,10 +32,10 @@ public class DataBaseWorks {
         localisation.saveNewLocation(new Localisation("25W39N","Śląskie","Katowice","Polska"));
         localisation.saveNewLocation(new Localisation("65W75N","Małopolskie","Kraków","Polska"));
 
-//        List<Localisation> listOfLocalisations = localisation.findAllLocalisations();
-//        for (Localisation localisationFromList : listOfLocalisations) {
-//            System.out.println(localisationFromList.toString());
-//        }
+        List<Localisation> listOfLocalisations = localisation.findAllLocalisations();
+        for (Localisation localisationFromList : listOfLocalisations) {
+            System.out.println(localisationFromList.toString());
+        }
     }
 
 
