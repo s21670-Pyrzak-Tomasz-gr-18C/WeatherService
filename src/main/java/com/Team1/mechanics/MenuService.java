@@ -22,6 +22,5 @@ public class MenuService {
                 System.out.println("niepoprawny wybór");
                 break;
         }
-
     }
 }
