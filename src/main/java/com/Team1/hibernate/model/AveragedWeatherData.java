@@ -26,7 +26,7 @@ public class AveragedWeatherData extends BaseEntity{
     private double humidity;
 
     @Column(name = "wind_direction")
-    private double windDirection;
+    private String windDirection;
 
     @Column (name = "wind_speed")
     private double windSpeed;
