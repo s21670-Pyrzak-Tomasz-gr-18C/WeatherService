@@ -1,9 +1,16 @@
 package com.Team1.dto;
 
 public class AccuweatherResponse {
-    private String cityKey;
+    private String Key;
 
-    public void setCityKey(String cityKey){this.cityKey=cityKey;}
+    public void setKey(String cityKey){this.Key=Key;}
 
-    public String getCityKey(){return cityKey;}
+    public String getKey(){return Key;}
+
+    @Override
+    public String toString() {
+        return "AccuweatherResponse{" +
+                "cityKey='" + Key + '\'' +
+                '}';
+    }
 }
