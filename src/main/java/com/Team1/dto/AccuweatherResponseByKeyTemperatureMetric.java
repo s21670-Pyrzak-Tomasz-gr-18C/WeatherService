@@ -7,8 +7,8 @@ public class AccuweatherResponseByKeyTemperatureMetric {
         return Value;
     }
 
-    public void setValue(double value) {
-        Value = value;
+    public void setValue(double Value) {
+        this.Value = Value;
     }
 
     @Override

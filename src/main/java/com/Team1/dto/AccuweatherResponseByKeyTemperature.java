@@ -1,14 +1,18 @@
 package com.Team1.dto;
 
-public class AccuweatherResponseByKeyTemperature {
-    private AccuweatherResponseByKeyTemperature Metric;
+import com.fasterxml.jackson.annotation.JsonGetter;
 
-    public AccuweatherResponseByKeyTemperature getMetric() {
+public class AccuweatherResponseByKeyTemperature {
+
+    private AccuweatherResponseByKeyTemperatureMetric Metric;
+
+    @JsonGetter("metric")
+    public AccuweatherResponseByKeyTemperatureMetric getMetric() {
         return Metric;
     }
 
-    public void setMetric(AccuweatherResponseByKeyTemperature metric) {
-        Metric = metric;
+    public void setMetric(AccuweatherResponseByKeyTemperatureMetric Metric) {
+        this.Metric = Metric;
     }
 
     @Override

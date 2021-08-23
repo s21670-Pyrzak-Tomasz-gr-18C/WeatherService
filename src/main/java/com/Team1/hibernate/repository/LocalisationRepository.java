@@ -7,7 +7,7 @@ import javax.persistence.EntityTransaction;
 import java.util.List;
 
 public class LocalisationRepository {
-    private final EntityManager entityManager;
+    private  EntityManager entityManager;
 
     public LocalisationRepository(EntityManager entityManager) {
         if (entityManager == null) {

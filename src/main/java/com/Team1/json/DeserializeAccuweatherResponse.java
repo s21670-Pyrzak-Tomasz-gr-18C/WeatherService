@@ -12,12 +12,9 @@ import okhttp3.Response;
 public class DeserializeAccuweatherResponse {
 
     public AccuweatherResponse deserializeAccuweatherResponse(String accuweatherJson) throws JsonProcessingException {
-        System.out.println(accuweatherJson);
         ObjectMapper objectMapper = new ObjectMapper()
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         AccuweatherResponse accuweatherResponse = objectMapper.readValue(accuweatherJson, AccuweatherResponse.class);
-
-
         return accuweatherResponse;
     }
 }
