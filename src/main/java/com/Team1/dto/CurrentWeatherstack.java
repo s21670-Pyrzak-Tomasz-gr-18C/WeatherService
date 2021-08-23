@@ -3,7 +3,7 @@ package com.Team1.dto;
 public class CurrentWeatherstack {
     private double temperature;
     private double wind_speed;
-    private String wind_dir;
+    private double wind_degree;
     private double pressure;
     private double humidity;
 
@@ -23,12 +23,12 @@ public class CurrentWeatherstack {
         this.wind_speed = wind_speed;
     }
 
-    public String getWind_dir() {
-        return wind_dir;
+    public double getWind_degree() {
+        return wind_degree;
     }
 
     public void setWind_dir(String wind_dir) {
-        this.wind_dir = wind_dir;
+        this.wind_degree = wind_degree;
     }
 
     public double getPressure() {
@@ -52,7 +52,7 @@ public class CurrentWeatherstack {
         return "CurrentWeatherstack{" +
                 "temperature=" + temperature +
                 ", wind_speed=" + wind_speed +
-                ", wind_dir='" + wind_dir + '\'' +
+                ", wind_dir='" + wind_degree + '\'' +
                 ", pressure=" + pressure +
                 ", humidity=" + humidity +
                 '}';

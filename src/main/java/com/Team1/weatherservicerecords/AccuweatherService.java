@@ -9,7 +9,6 @@ import java.io.IOException;
 public class AccuweatherService {
     private String apkey = "iLMHejPpxQb8aAHiKEisjROm5rjq7uNu";
     private final String BASE_URL = "http://dataservice.accuweather.com/locations/v1/search?q=";
-   // private final String BASE_URL_BY_CITY_KEY ="http://dataservice.accuweather.com/forecasts/v1/daily/1day/";
     private final String BASE_URL_BY_CITY_KEY ="http://dataservice.accuweather.com/currentconditions/v1/";
     private String url;
     private String urlByCityKey;

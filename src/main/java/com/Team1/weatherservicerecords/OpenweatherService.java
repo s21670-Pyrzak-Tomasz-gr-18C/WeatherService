@@ -9,12 +9,12 @@ import java.io.IOException;
 
 public class OpenweatherService {
     private String apkey ="e4ca4fd5315cdd1fcee3ff9acdca07b9";
-    private final String BASE_URL = "api.openweathermap.org/data/2.5/weather?q=";
+    private final String BASE_URL = "https://api.openweathermap.org/data/2.5/weather?q=";
     private String url;
 
     public void createBaseUrl(String cityName) {
-       // url = BASE_URL+cityName+"&appid="+apkey ;
-       url = "https://api.openweathermap.org/data/2.5/weather?q=Warszawa&appid=e4ca4fd5315cdd1fcee3ff9acdca07b9";
+        url = BASE_URL+cityName+"&appid="+apkey ;
+      // url = "https://api.openweathermap.org/data/2.5/weather?q=Warszawa&appid=e4ca4fd5315cdd1fcee3ff9acdca07b9";
         System.out.println(url);
     }
 

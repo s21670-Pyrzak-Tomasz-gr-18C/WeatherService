@@ -12,7 +12,7 @@ public class DeserializeOpenweatherResponse {
             ObjectMapper objectMapper = new ObjectMapper()
                     .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             OpenWeatherResponse openWeatherResponse = objectMapper.readValue(openweatherJason, OpenWeatherResponse.class);
-            System.out.println("to jest open: \n"+openWeatherResponse.toString());
+
             return openWeatherResponse;
 
     }

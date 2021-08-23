@@ -11,6 +11,7 @@ import com.Team1.weatherservicerecords.WeatherstackService;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class MenuService {
@@ -36,12 +37,13 @@ public class MenuService {
                 DeserializeWeatherstackResponse deserializedWeatherstackResponse = new DeserializeWeatherstackResponse();
                 System.out.println(deserializedWeatherstackResponse.deserializeWeatherstackResponse(weatherServiceResponse.body().string()).toString());
 
-//                accuweatherService.createBaseUrl(cityName);
-//                Response accuweatherResponseForCityKey = accuweatherService.getResponseFromAcuweather();
-//                DeserializeAccuweatherResponse deserializeAccuweatherResponse = new DeserializeAccuweatherResponse();
-//             //   AccuweatherResponse cityKey = deserializeAccuweatherResponse.deserializeAccuweatherresponse(accuweatherResponseForCityKey.body().string().toString());
-             //   System.out.println(cityKey);
-////
+                accuweatherService.createBaseUrl(cityName);
+                Response accuweatherResponseForCityKey = accuweatherService.getResponseFromAcuweather();
+                DeserializeAccuweatherResponse deserializeAccuweatherResponse = new DeserializeAccuweatherResponse();
+                String AccuweatherJason = (accuweatherResponseForCityKey.body().string().toLowerCase());
+                AccuweatherResponse cityKey = deserializeAccuweatherResponse.deserializeAccuweatherResponse(AccuweatherJason);
+                System.out.println(cityKey.getKey());
+
 //                accuweatherService.createUrlByCityKey("2696858");
 //                Response accuweatherResponseByCityKey = accuweatherService.getResponseByCityKeyFromAcuweather();
 //                System.out.println(accuweatherResponseByCityKey.body().string());
@@ -49,7 +51,8 @@ public class MenuService {
                 openweatherService.createBaseUrl(cityName);
                 Response openweatherResponse = openweatherService.getResponseFromOpenweather();
                 DeserializeOpenweatherResponse deserializedOpenweatherResponse  = new DeserializeOpenweatherResponse();
-                System.out.println(openweatherResponse.body().string());
+                System.out.println(deserializedOpenweatherResponse.deserializeOpenweather(openweatherResponse.body().string()));
+
 
 
 
