@@ -1,0 +1,17 @@
+D:\WeatherService\WeatherService\src\main\java\com\Team1\weatherservicerecords\AccuweatherService.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\weatherservicerecords\OpenweatherService.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\hibernate\model\Localisation.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\mechanics\MenuService.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\hibernate\model\AveragedWeatherData.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\main\Main.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\dto\CurrentWeatherstack.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\main\AppMenu.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\dto\AccuweatherResponse.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\json\DeserializeWeatherstackResponse.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\hibernate\repository\AveregedWeatherDataRepository.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\hibernate\repository\LocalisationRepository.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\json\DeserializeAccuweatherResponse.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\weatherservicerecords\WeatherstackService.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\dto\WeatherstackResponse.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\hibernate\DataBaseWorks.java
+D:\WeatherService\WeatherService\src\main\java\com\Team1\hibernate\model\BaseEntity.java

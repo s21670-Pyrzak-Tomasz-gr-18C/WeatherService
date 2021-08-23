@@ -12,10 +12,6 @@ import okhttp3.Response;
 public class DeserializeAccuweatherResponse {
 
     public AccuweatherResponse deserializeAccuweatherResponse(String accuweatherJson) throws JsonProcessingException {
-//        accuweatherJson = "" +
-//                "{ \"Key\" : \"2568\", \"type\" : \"Mercedes\", \"productionYear\" : 2021, " +
-//                "\"nowyAtrybut\" : \"xxxxyyy\" " +
-//                " }";
         System.out.println(accuweatherJson);
         ObjectMapper objectMapper = new ObjectMapper()
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

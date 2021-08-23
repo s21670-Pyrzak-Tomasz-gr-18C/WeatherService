@@ -1,16 +1,19 @@
 package com.Team1.dto;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 public class AccuweatherResponse {
-    private Integer key;
+    private String Key;
 
-    public void setKey(Integer key){this.key=key;}
+    public void setKey(String Key){this.Key=Key;}
 
-    public Integer getKey(){return key;}
+    @JsonGetter("Key")
+    public String getKey(){return Key;}
 
     @Override
     public String toString() {
         return "AccuweatherResponse{" +
-                "cityKey='" + key + '\'' +
+                "cityKey='" + Key + '\'' +
                 '}';
     }
 }

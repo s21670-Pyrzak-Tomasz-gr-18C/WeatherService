@@ -7,7 +7,7 @@ import okhttp3.Response;
 import java.io.IOException;
 
 public class AccuweatherService {
-    private String apkey = "iLMHejPpxQb8aAHiKEisjROm5rjq7uNu";
+    private String apkey = "GFPiTeARKxxVWe4lOczAoXJ7eYzhPTsp";
     private final String BASE_URL = "http://dataservice.accuweather.com/locations/v1/search?q=";
     private final String BASE_URL_BY_CITY_KEY ="http://dataservice.accuweather.com/currentconditions/v1/";
     private String url;
@@ -44,9 +44,4 @@ public class AccuweatherService {
         Response response = call.execute();
         return  response;
     }
-
-
-
-
-
 }

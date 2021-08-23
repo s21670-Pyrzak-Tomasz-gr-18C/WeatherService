@@ -11,26 +11,42 @@ import lombok.extern.slf4j.Slf4j;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 @Slf4j
 public class DataBaseWorks {
-    public void createSessionFactory() {
+    public SessionFactory createSessionFactory() {
         SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(AveragedWeatherData.class)
                 .addAnnotatedClass(Localisation.class)
                 .buildSessionFactory();
-
         localisationQueries(sessionFactory);
- //       averagedWeatherDataQueries(sessionFactory);
+        return sessionFactory;
+
+
+    }
+    public void createNewLocalisation(SessionFactory sessionFactory){
+        Scanner scanner = new Scanner(System.in);
+        LocalisationRepository localisation = new LocalisationRepository(sessionFactory.createEntityManager());
+        System.out.println("Podaj współrzędne: ");
+        String geographicCoordinates = scanner.nextLine();
+        System.out.println("Podaj nazwę regionu: ");
+        String region = scanner.nextLine();
+        System.out.println("Podaj nazwę lokalizacji: ");
+        String name = scanner.nextLine();
+        System.out.println("Podaj nazwe kraju: ");
+        String country = scanner.nextLine();
+
+        localisation.saveNewLocation(new Localisation(geographicCoordinates,region,name,country));
     }
 
     public void localisationQueries(SessionFactory sessionFactory){
         LocalisationRepository localisation = new LocalisationRepository(sessionFactory.createEntityManager());
 
         localisation.saveNewLocation(new Localisation("21W32N","Mazowieckie","Warszawa","Polska"));
-        localisation.saveNewLocation(new Localisation("25W39N","Śląskie","Katowice","Polska"));
-        localisation.saveNewLocation(new Localisation("65W75N","Małopolskie","Kraków","Polska"));
+//        localisation.saveNewLocation(new Localisation("25W39N","Śląskie","Katowice","Polska"));
+//        localisation.saveNewLocation(new Localisation("65W75N","Małopolskie","Kraków","Polska"));
 
         List<Localisation> listOfLocalisations = localisation.findAllLocalisations();
         for (Localisation localisationFromList : listOfLocalisations) {
