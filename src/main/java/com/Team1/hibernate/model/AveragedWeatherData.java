@@ -33,10 +33,4 @@ public class AveragedWeatherData extends BaseEntity{
 
     @Column (name = "localisation_id")
     private Long  localisationID;
-
-
-
-
-
-
 }

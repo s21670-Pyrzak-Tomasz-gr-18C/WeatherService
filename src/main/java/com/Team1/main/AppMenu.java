@@ -2,6 +2,7 @@ package com.Team1.main;
 
 import com.Team1.mechanics.MenuService;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AppMenu {
@@ -14,7 +15,7 @@ public class AppMenu {
             "3.Wyświetl bierzące dane dla wybranej lokalizacji\n" +
             "4.Wyświetl historyczne dane dla wybranej lokalizacji\n";
 
-    public void start(){
+    public void start() throws IOException {
         showMenu();
         getUserChoice();
         MenuService menuService = new MenuService();

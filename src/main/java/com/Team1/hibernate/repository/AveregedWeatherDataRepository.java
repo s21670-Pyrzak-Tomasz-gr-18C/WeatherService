@@ -9,7 +9,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class AveregedWeatherDataRepository {
-    private final EntityManager entityManager;
+    private EntityManager entityManager;
+
+    public AveregedWeatherDataRepository(){
+    }
 
     public AveregedWeatherDataRepository(EntityManager entityManager) {
         if (entityManager == null) {
@@ -37,10 +40,10 @@ public class AveregedWeatherDataRepository {
     }
 
     public List<AveragedWeatherData> printAllSavedWeatherDateForLocalisation(String localisationName, LocalDate date){
-        List<AveragedWeatherData> weatherDataList = entityManager.createQuery("FROM AveragedWeatherData WHERE localisationID = (SELECT id FROM Localisation WHERE name = :localisation) and date = :date  ", AveragedWeatherData.class)
+        return entityManager.createQuery("FROM AveragedWeatherData WHERE localisationID = (SELECT id FROM Localisation WHERE name = :localisation) and date = :date  ", AveragedWeatherData.class)
                 .setParameter("localisation",localisationName)
                 .setParameter("date", date)
                 .getResultList();
-        return weatherDataList;
     }
+
 }
