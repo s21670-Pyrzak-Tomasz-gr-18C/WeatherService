@@ -1,21 +1,14 @@
 package com.Team1.mechanics;
 
-import com.Team1.dto.AccuResponse.AccuweatherResponse;
-import com.Team1.dto.AccuResponse.AccuweatherResponseByKey;
-import com.Team1.dto.OpenResponse.OpenWeatherResponse;
-import com.Team1.dto.weatherstack.WeatherstackResponse;
 import com.Team1.hibernate.DataBaseWorks;
-import com.Team1.json.DeserializeAccuweatherResponse;
-import com.Team1.json.DeserializeAccuweatherResponseByKey;
-import com.Team1.json.DeserializeOpenweatherResponse;
-import com.Team1.json.DeserializeWeatherstackResponse;
-import com.Team1.weatherservicerecords.AccuweatherService;
-import com.Team1.weatherservicerecords.OpenweatherService;
-import com.Team1.weatherservicerecords.WeatherstackService;
-import okhttp3.Response;
+import com.Team1.hibernate.model.AveragedWeatherData;
+import com.Team1.hibernate.repository.AveregedWeatherDataRepository;
 import org.hibernate.SessionFactory;
 
+import javax.persistence.EntityManager;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuService {
@@ -36,15 +29,28 @@ public class MenuService {
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Podaj nazwę miejscowści");
                 String cityName = sc.nextLine();
+                sc.close();
                 ResultWorks resultWorks = new ResultWorks();
                 resultWorks.showAndSaveResultQuery(cityName);
                 break;
             case 4:
-                System.out.println("wybrałeś4");
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Podaj datę z której chcesz odczytać dane pogodowe (data w formacie YYYY-MM-DD)");
+                String date = scanner.nextLine();
+                DataBaseWorks dataBaseWorks2 = new DataBaseWorks();
+                SessionFactory sessionFactory2 =dataBaseWorks2.createSessionFactory();
+
+                AveregedWeatherDataRepository averegedWeatherDataRepository = new AveregedWeatherDataRepository(sessionFactory2.createEntityManager());
+                List<AveragedWeatherData> listOfParametersForDate = averegedWeatherDataRepository.printAllSavedWeatherDateForLocalisation(LocalDate.parse(date));
+
+                for (AveragedWeatherData data : listOfParametersForDate) {
+                    System.out.println(data.toString());
+                }
                 break;
             default:
                 System.out.println("niepoprawny wybór");
                 break;
+
         }
     }
 }

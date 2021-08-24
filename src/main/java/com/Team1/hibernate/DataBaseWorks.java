@@ -53,12 +53,6 @@ public class DataBaseWorks {
     public void averagedWeatherDataSave(SessionFactory sessionFactory,double avgTemp,double avgPressure, double avgHumidity,double avgWindDirection, double avgWindSpeed,String localisationName){
         AveregedWeatherDataRepository weatherDataRepository = new AveregedWeatherDataRepository(sessionFactory.createEntityManager());
         weatherDataRepository.saveRealTimeWeatherData(new AveragedWeatherData(LocalDate.now(),avgTemp,avgPressure,avgHumidity,avgWindDirection,avgWindSpeed,localisationName));
-//
-//
-//       List<AveragedWeatherData> weatherDataFromList =  weatherDataRepository.printAllSavedWeatherDateForLocalisation("Warszawa",LocalDate.of(1999,12,9));
-//        for (AveragedWeatherData weatherData : weatherDataFromList) {
-//            System.out.println("Dane pogodowe dla Wa-wy z dnia 09.12.1999: "+weatherData.toString());
-//        }
-//
-//    }`
+
+   }
 }
