@@ -1,4 +1,4 @@
-package com.Team1.dto;
+package com.Team1.dto.OpenResponse;
 
 public class MainOpenweather {
     double temp;

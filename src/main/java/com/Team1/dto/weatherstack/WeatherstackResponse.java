@@ -1,4 +1,5 @@
-package com.Team1.dto;
+package com.Team1.dto.weatherstack;
+import com.Team1.dto.weatherstack.CurrentWeatherstack;
 import com.fasterxml.jackson.annotation.JsonGetter;
 public class WeatherstackResponse {
 

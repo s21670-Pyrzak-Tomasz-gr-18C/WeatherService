@@ -14,8 +14,6 @@ public class OpenweatherService {
 
     public void createBaseUrl(String cityName) {
         url = BASE_URL+cityName+"&appid="+apkey ;
-      // url = "https://api.openweathermap.org/data/2.5/weather?q=Warszawa&appid=e4ca4fd5315cdd1fcee3ff9acdca07b9";
-        System.out.println(url);
     }
 
     public Response getResponseFromOpenweather() throws IOException {

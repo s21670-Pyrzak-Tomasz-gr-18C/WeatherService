@@ -1,4 +1,4 @@
-package com.Team1.dto;
+package com.Team1.dto.AccuResponse;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 

@@ -1,4 +1,4 @@
-package com.Team1.dto;
+package com.Team1.dto.weatherstack;
 
 public class CurrentWeatherstack {
     private double temperature;
