@@ -4,6 +4,7 @@ import com.Team1.dto.AccuResponse.AccuweatherResponse;
 import com.Team1.dto.AccuResponse.AccuweatherResponseByKey;
 import com.Team1.dto.OpenResponse.OpenWeatherResponse;
 import com.Team1.dto.weatherstack.WeatherstackResponse;
+import com.Team1.hibernate.DataBaseWorks;
 import com.Team1.json.DeserializeAccuweatherResponse;
 import com.Team1.json.DeserializeAccuweatherResponseByKey;
 import com.Team1.json.DeserializeOpenweatherResponse;
@@ -12,6 +13,7 @@ import com.Team1.weatherservicerecords.AccuweatherService;
 import com.Team1.weatherservicerecords.OpenweatherService;
 import com.Team1.weatherservicerecords.WeatherstackService;
 import okhttp3.Response;
+import org.hibernate.SessionFactory;
 
 import java.io.IOException;
 
@@ -19,10 +21,16 @@ public class ResultWorks {
     AccuweatherResponseByKey accuweatherDataResponse;
     WeatherstackResponse weatherstackDataResponse;
     OpenWeatherResponse openWeatherDataResponse;
+    double avgTemp;
+    double avgHumidity;
+    double avgWindDir;
+    double avgPressure;
+    double avgWindSpeed;
 
     public void showAndSaveResultQuery(String cityname) throws IOException {
         getResultsFromQuery(cityname);
         printAvgData();
+        saveDataToDatabase(cityname);
     }
 
     private void getResultsFromQuery(String cityname) throws IOException {
@@ -73,26 +81,26 @@ public class ResultWorks {
     private void printAvgData() {
         AverageDataCalculator dataCalculator = new AverageDataCalculator();
 
-        double avgTemp = dataCalculator.calculateAverageTemp(weatherstackDataResponse.getCurrent()
+         avgTemp = dataCalculator.calculateAverageTemp(weatherstackDataResponse.getCurrent()
                 .getTemperature(), openWeatherDataResponse.getMain()
                 .getTemp(), accuweatherDataResponse.getTemperature().getMetric().getValue());
 
-        double avgHumidity = dataCalculator.calculateAverageHumidity
+         avgHumidity = dataCalculator.calculateAverageHumidity
                 (openWeatherDataResponse.getMain().getHumidity(),
                         weatherstackDataResponse.getCurrent().getHumidity(),
                         accuweatherDataResponse.getRelativeHumidity());
 
-        double avgWindDir = dataCalculator.calculateAverageWindDirection
+         avgWindDir = dataCalculator.calculateAverageWindDirection
                 (openWeatherDataResponse.getWind().getDeg(),
                         weatherstackDataResponse.getCurrent().getWind_degree(),
                         accuweatherDataResponse.getWind().getDirection().getDegrees());
 
-        double avgPressure = dataCalculator.calculateAveragePressure
+         avgPressure = dataCalculator.calculateAveragePressure
                 (openWeatherDataResponse.getMain().getPressure(),
                         weatherstackDataResponse.getCurrent().getPressure(),
                         accuweatherDataResponse.getPressure().getMetric().getValue());
 
-        double avgWindSpeed = dataCalculator.calculateAverageWindSpeed
+        avgWindSpeed = dataCalculator.calculateAverageWindSpeed
                 (openWeatherDataResponse.getWind().getSpeed(),
                         weatherstackDataResponse.getCurrent().getWind_speed(),
                         accuweatherDataResponse.getWind().getSpeed().getMetric().getValue());
@@ -102,6 +110,10 @@ public class ResultWorks {
         System.out.println("Srednia wilgotnoć: " + avgHumidity);
         System.out.println("Srednia prędkość wiatru: " + avgWindSpeed);
         System.out.println("Sreddna wartość kierunku wiatru w stopniach: " + avgWindDir);
-
+    }
+    private void saveDataToDatabase(String cityName){
+        DataBaseWorks dataBaseWorks = new DataBaseWorks();
+        SessionFactory sessionFactory = dataBaseWorks.createSessionFactory();
+        dataBaseWorks.averagedWeatherDataSave(sessionFactory,avgTemp,avgPressure,avgHumidity,avgWindDir,avgWindSpeed,cityName);
     }
 }

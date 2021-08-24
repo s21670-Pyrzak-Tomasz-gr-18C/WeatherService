@@ -31,6 +31,8 @@ public class AveragedWeatherData extends BaseEntity{
     @Column (name = "wind_speed")
     private double windSpeed;
 
-    @Column (name = "localisation_id")
-    private Long  localisationID;
+    @Column (name = "localisation_name")
+    private String  localisationName;
+
+
 }
